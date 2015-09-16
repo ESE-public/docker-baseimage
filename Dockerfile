@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.17
+FROM phusion/baseimage:latest
 MAINTAINER Keith Bentrup <kbentrup@ebay.com>
 
 ENV LANG=en_US.UTF-8 \
