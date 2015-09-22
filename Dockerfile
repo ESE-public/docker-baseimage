@@ -6,5 +6,5 @@ ENV LANG=en_US.UTF-8 \
 
 COPY setup-via-env.sh /etc/my_init.d/
 
-RUN curl https://get.docker.com/builds/Linux/x86_64/docker-latest -o /usr/local/bin/docker && \
+RUN curl https://get.docker.com/builds/Linux/x86_64/docker-latest -o /usr/bin/docker && \
   chmod +x /usr/local/bin/docker
