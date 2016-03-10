@@ -1,0 +1,11 @@
+version: '2'
+services:
+
+  baseimage:
+    build: 
+      context: .
+      args:
+        - constraint:node==dv-vm1
+    image: esepublic/baseimage:0.9.18
+    environment:
+      - constraint:node==/dv-vm1/
