@@ -1,10 +1,7 @@
-FROM phusion/baseimage
-MAINTAINER Keith Bentrup <kbentrup@ebay.com>
-
-ENV LANG=en_US.UTF-8 \
-  TERM=xterm-256color
+FROM phusion/baseimage:0.9.18
+MAINTAINER Keith Bentrup <kbentrup@magento.com>
 
 COPY setup-via-env.sh /etc/my_init.d/
 
-RUN curl https://get.docker.com/builds/Linux/x86_64/docker-latest -o /usr/local/bin/docker && \
-  chmod +x /usr/local/bin/docker
+# turn on log compression
+RUN sed -i 's/^#compress/compress/' /etc/logrotate.conf 
