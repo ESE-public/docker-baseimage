@@ -1,16 +1,13 @@
 #!/usr/bin/env bash
 
 
-if [ ! -f "/.cron-fixed" ]; then
+if [ ! -f "/.cron-updated" ]; then
 
   # randomize minute and hour of cron jobs for so that each container on the host is different
   for i in hourly daily weekly monthly; do 
     sed -i "/$i/ s/^[0-9]\+/$(echo $((RANDOM%60)))/;
       /$i/ s/^\([0-9*]\+\) \+[0-9]\+/\1 $(echo $((RANDOM%24)))/" /etc/crontab; 
   done
-
-  # also randomize php job and run once per hour
-  sed -i "s/^[0-9,]\+/$(echo $((RANDOM%60)))/;" /etc/cron.d/php
 
   # disable all but daily crontab
   sed -i '/cron.\(hour\|week\|month\)ly/ s/^/#/' /etc/crontab
@@ -19,7 +16,7 @@ if [ ! -f "/.cron-fixed" ]; then
   chmod -x /etc/cron.daily/*
   chmod +x /etc/cron.daily/logrotate
 
-  : > "/.cron-fixed"
+  : > "/.cron-updated"
 
 fi
 
