@@ -15,6 +15,10 @@ if [ ! -f "/.cron-fixed" ]; then
   # disable all but daily crontab
   sed -i '/cron.\(hour\|week\|month\)ly/ s/^/#/' /etc/crontab
 
+  # disable all daily cronjobs except logrotate
+  chmod -x /etc/cron.daily/*
+  chmod +x /etc/cron.daily/logrotate
+
   : > "/.cron-fixed"
 
 fi
