@@ -1,4 +1,4 @@
-# ESE baseimage
+# PMET baseimage
 
 This image adds the following defaults to the [phusion/baseimage](https://github.com/phusion/baseimage-docker):
 
